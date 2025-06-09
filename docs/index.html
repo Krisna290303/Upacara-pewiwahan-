@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Undangan Pewiwahan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fdfaf4;
+      color: #4a3b2a;
+      text-align: center;
+    }
 
+    header {
+      padding: 2rem;
+      background-color: #d8c8b8;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/4d/Canang_sari_di_Bali.jpg');
+      background-size: cover;
+      color: white;
+    }
+
+    h1 {
+      margin: 0.5em 0;
+    }
+
+    .section {
+      padding: 2rem;
+    }
+
+    .bali-text {
+      font-size: 1.2em;
+      font-style: italic;
+      margin-bottom: 1em;
+    }
+
+    footer {
+      background-color: #eee2d3;
+      padding: 1rem;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="Gus Teja.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung audio.
+  </audio>
+
+  <header>
+    <h1>Undangan Pewiwahan</h1>
+    <div class="bali-text">
+      Om Swastyastu,<br/>
+      Dengan hormat kami mengundang Bapak/Ibu/Saudara/i <span id="guestName">yang terhormat</span>
+    </div>
+  </header>
+
+  <div class="section">
+    <h2>i Putu Krisna Adi Saputra<br/>(ᬦᬶᬧᬸᬢᬸ᭞ᬓ᭄ᬭᬶᬲ᭄ᬦ᭄ᬬᬁᬘᬶᬢᬸᬧᬃ)</h2>
+    <p>dan</p>
+    <h2>Ni Komang Ristya<br/>(ᬦᬶᬓᭀᬫᬂᬭᬶᬲ᭄ᬢ᭄ᬬ)</h2>
+
+    <p>akan melangsungkan upacara pernikahan pada:</p>
+    <p><strong>Jumat, 13 Juni 2025</strong><br/>
+    Pukul 15.00 WITA<br/>
+    Bertempat di Desa Gumbrih, Banjar Tunjung 2</p>
+  </div>
+
+  <footer>
+    Aturangang nunas ampura sareng rauh ring acara puniki.<br/>
+    Matur suksma.<br/><br/>
+    <em>Salam hormat,<br/>
+    Keluarga Besar</em>
+  </footer>
+
+  <script>
+    // Ambil nama tamu dari URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('to');
+    if (guestName) {
+      document.getElementById("guestName").textContent = guestName;
+    }
+  </script>
+</body>
+</html>
