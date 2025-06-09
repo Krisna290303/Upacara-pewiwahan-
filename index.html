@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Krisna & Ristya</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      background-color: #fffaf0;
+      color: #3e2c1c;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      padding: 30px;
+      box-sizing: border-box;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .slide.active {
+      display: flex;
+      animation: fade 1s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .judul { font-size: 1.5em; }
+    .nama { font-size: 2em; font-weight: bold; color: #6b3e26; }
+    .info { font-size: 1.2em; margin-top: 20px; }
+    .footer { font-size: 1em; font-style: italic; margin-top: 20px; }
+
+    #audio-control {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #ffffffaa;
+      padding: 5px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bgm" autoplay loop>
+  <source src="Gus teja.mp3" type="audio/mp3">
+</audio>
+
+<div id="audio-control">🔊 Musik</div>
+
+<div class="slide active">
+  <div>
+    <div class="judul">Om Awighnam Astu Namo Siddham</div>
+    <div class="info">Dengan hormat kami mengundang:</div>
+    <div id="nama-tamu" class="nama">Bapak/Ibu</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div>
+    <div class="info">Untuk menghadiri upacara pernikahan kami:</div>
+    <div class="nama">Ni Putu Krisna Adi Saputra</div>
+    <div>&</div>
+    <div class="nama">Ni Komang Ristya</div>
+  </div>
+</div>
+
+<div class="slide">
+  <div class="info">
+    🗓️ Jumat, 13 Juni 2025<br>
+    🕒 Pukul 15.00 WITA<br>
+    📍 Desa Gumbrih, Banjar Tunjung 2
+  </div>
+</div>
+
+<div class="slide">
+  <div class="footer">
+    Om Shanti, Shanti, Shanti Om<br>
+    Aturang nunas pangaksama sareng panglaksana
+  </div>
+</div>
+
+<script>
+  const nama = new URLSearchParams(window.location.search).get('to');
+  if (nama) {
+    document.getElementById('nama-tamu').innerText = nama;
+  }
+
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
+
+  function nextSlide() {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }
+
+  setInterval(nextSlide, 4000);
+
+  const audio = document.getElementById('bgm');
+  const control = document.getElementById('audio-control');
+  let playing = true;
+
+  control.onclick = () => {
+    if (playing) {
+      audio.pause();
+      control.textContent = '🔇 Musik Mati';
+    } else {
+      audio.play();
+      control.textContent = '🔊 Musik';
+    }
+    playing = !playing;
+  };
+</script>
+
+</body>
+</html>
